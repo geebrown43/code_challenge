@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Landing from './components/LandingPage'
+import PhotoPage from './components/PhotosPage'
 export default class App extends React.Component {
   constructor(){
     super()
     this.state ={
       photos: [],
-      landing: false
+      landing: false,
+      photosPage: false
     }
   }
   
@@ -15,7 +17,7 @@ export default class App extends React.Component {
   }
 
   _clearLanding = () => {
-    this.setState({landing: !this.state.landing})
+    this.setState({landing: !this.state.landing, photosPage: !this.state.photosPage})
   }
 
   render() {
@@ -23,6 +25,7 @@ export default class App extends React.Component {
     return (
       <View style={{flex : 1}}>
         {this.state.landing ? <Landing photo={value} _clearLanding={this._clearLanding}/>  : null}
+        {this.state.photosPage ? <PhotoPage images={value}/>: null}
       </View>
     );
   }
