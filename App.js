@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Landing from './components/LandingPage'
 import PhotoPage from './components/PhotosPage'
-import { Constants, Location, Permissions } from 'expo';
+import { Constants, Location, Permissions, Font } from 'expo';
 
 
 
@@ -13,20 +13,26 @@ export default class App extends React.Component {
     super()
     this.state ={
       photos: [],
-      landing: false,
       photosPage: false,
       location: null,
-      current: ''
+      current: '',
+      fontLoaded: false
     }
   }
   
   async componentDidMount(){
-    fetch(`https://api.unsplash.com/photos/random?client_id=${unsplashAPIKey}&count=10`).then(items => items.json()).then(data => this.setState({photos: data, landing: !this.state.landing}))
+    await fetch(`https://api.unsplash.com/photos/random?client_id=${unsplashAPIKey}&count=10`).then(items => items.json()).then(data => this.setState({photos: data, landing: !this.state.landing}))
+    
+    await Font.loadAsync({
+      'open-sans': require('./assets/fonts/OpenSans-Bold.ttf'),
+    });
+    this.setState({fontLoaded: true})
     this._getLocationAsync()
+
   }
 
   _clearLanding = () => {
-    this.setState({landing: !this.state.landing, photosPage: !this.state.photosPage})
+    this.setState({fontLoaded: !this.state.landing, photosPage: !this.state.photosPage})
   }
 
   _getLocationAsync = async () => {
@@ -52,7 +58,7 @@ export default class App extends React.Component {
     let value = this.state.photos
     return (
       <View style={{flex : 1}}>
-        {this.state.landing ? <Landing photo={value} _clearLanding={this._clearLanding} currentLocation={this.state.current}/>  : null}
+        {this.state.fontLoaded ? <Landing photo={value} _clearLanding={this._clearLanding} currentLocation={this.state.current}/>  : null}
         {this.state.photosPage ? <PhotoPage images={value}/>: null}
       </View>
     );
