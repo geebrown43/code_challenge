@@ -21,13 +21,8 @@ export default class App extends React.Component {
   }
   
   async componentDidMount(){
-   
     fetch(`https://api.unsplash.com/photos/random?client_id=${unsplashAPIKey}&count=10`).then(items => items.json()).then(data => this.setState({photos: data, landing: !this.state.landing}))
     this._getLocationAsync()
-    console.log(this.state.location)
-    
-      
-    
   }
 
   _clearLanding = () => {
@@ -41,10 +36,9 @@ export default class App extends React.Component {
         errorMessage: 'Permission to access location was denied',
       });
     }
-
     let location = await Location.getCurrentPositionAsync({});
     this.setState({ location });
-    console.log(this.state.location)
+
     if(this.state.location !== null){
       let lat = this.state.location.coords.latitude
       let lng = this.state.location.coords.longitude
@@ -55,7 +49,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    //console.log(this.state.location)
     let value = this.state.photos
     return (
       <View style={{flex : 1}}>
