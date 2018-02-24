@@ -28,6 +28,7 @@ export default class PhotoPage extends React.Component{
                         return (
                             <View key={i} style={{margin: 10}}>
                             <Image  style={{height:60, width: 90}} source={{uri: a.urls.small }}/>
+                            <Text>{a.links.self}</Text>
                             </View>
                         )
                     })}
