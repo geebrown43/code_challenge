@@ -1,21 +1,26 @@
 import React from 'react'
-import { View, Text, Button, ScrollView, Image, TouchableHighlight } from 'react-native'
+import { View, Text, ScrollView, Image, TouchableHighlight } from 'react-native'
+import {Button, Icon} from 'native-base'
 
 
 export default class PhotoPage extends React.Component {
     constructor() {
         super()
+        this.state={
+
+        }
     }
 
     render() {
-        console.log(this.props.images)
         return (
             <View style={{ margin: 10, justifyContent: 'space-around' }}>
-                <View>
-                    <View>
-                        <Text>My Photos</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', height: 80}}>
+                    <View style={{marginTop: 10}}>
+                        <Text style={{fontSize:36}}>My Photos</Text>
                     </View>
-                    <View>
+                    <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                        <Button><Icon name='list'/></Button>
+                        <Button><Icon name='grid'/></Button>
                         {/* Button
                     Button */}
                     </View>
@@ -33,7 +38,7 @@ export default class PhotoPage extends React.Component {
 
                                 <View style={{justifyContent: 'center', width: 280, margin: 10}}>
                                     <TouchableHighlight>
-                                    <Text style={{}}>{a.links.self}</Text>
+                                    <Text>{a.links.self}</Text>
                                     </TouchableHighlight>
                                 </View>
 
@@ -41,8 +46,8 @@ export default class PhotoPage extends React.Component {
                         )
                     })}
                 </ScrollView>
-                <View style={{ height: 60 }}>
-                    <Text style={{ textAlign: 'center' }}>Get Photos</Text>
+                <View style={{ height: 60, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ textAlign: 'center', fontSize: 26 }}>Get Photos</Text>
                 </View>
             </View>
         )
