@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, Image} from 'react-native'
+import {View, Text, Image, StyleSheet} from 'react-native'
 import {Button, Icon} from 'native-base'
 
 
@@ -14,23 +14,42 @@ class Landing extends React.Component{
                     </View>
                     
                 </View>
-                <View style={{alignItems: 'center'}}>
-                    {/* <Image style={{height: 200, width: 310}} source={{uri: this.props.photo[0].urls.regular}}/> */}
+                <View style={{alignItems: 'center', justifyContent: 'space-between'}}>
+                    <Image style={{height: 200, width: 310}} source={{uri: this.props.photo[0].urls.regular}}/>
+                    <View style={{borderWidth: 2, borderRadius: 50, height: 100, width: 100, marginTop: 20, marginBottom: 10}}></View>
                     <View>
-                    <Text style={{textAlign: 'center'}}>Gavin Brown</Text>
-                    <Text style={{textAlign: 'center'}}>@gavindevelops</Text>
+                    <Text style={styles.name}>Gavin Brown</Text>
+                    <Text style={styles.tag}>@gavindevelops</Text>
                     </View>
                 </View>
                 
-                <View style={{alignItems: 'center'}}>
-                   <Text style={{fontSize:16}}>{this.props.currentLocation}</Text>
+                <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginBottom: 40}}>
+                   
+
+                    <Icon name='pin'/>
+                   <Text style={styles.location}>{this.props.currentLocation}</Text>
+                   
                 </View>
             </View>
         )
     }
 }
 
-
+const styles = StyleSheet.create({
+    name: {
+        fontSize: 22,
+        textAlign:  'center',
+        fontFamily: 'open-sans'
+    },
+    tag:{
+        fontSize: 16,
+        textAlign:  'center',
+    },
+    location:{
+        fontSize: 12,
+        margin: 10
+    }
+})
 
 
 export default Landing
