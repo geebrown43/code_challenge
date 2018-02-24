@@ -20,7 +20,7 @@ class Landing extends React.Component{
                 </View>
                 
                 <View style={{alignItems: 'center'}}>
-                   <Text>Geocode Location</Text>
+                   <Text style={{fontSize:16}}>{this.props.currentLocation}</Text>
                 </View>
             </View>
         )
