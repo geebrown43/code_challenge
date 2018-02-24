@@ -19,8 +19,8 @@ export default class PhotoPage extends React.Component {
                         <Text style={{fontSize:36}}>My Photos</Text>
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                        <Button><Icon name='list'/></Button>
-                        <Button><Icon name='grid'/></Button>
+                        <Button iconLeft><Icon name='list'/><Text style={{marginLeft: 5}}>List</Text></Button>
+                        <Button iconLeft><Icon name='grid'/><Text style={{marginLeft: 5}}>Grid</Text></Button>
                         {/* Button
                     Button */}
                     </View>
