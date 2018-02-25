@@ -9,17 +9,10 @@ export default class List extends React.Component {
             <ScrollView>
                     {this.props.images.map((a, i) => {
                         return (
-                            <View key={i} style={{ margin: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <View>
-                                    <Image style={{ height: 60, width: 90 }} source={{ uri: a.urls.small }} />
-                                </View>
-
-                                <View style={{justifyContent: 'center', width: 280, margin: 10}}>
-                                    <TouchableHighlight>
-                                    <Text>{a.links.self}</Text>
-                                    </TouchableHighlight>
-                                </View>
-
+                            <View key={i} style={{ margin: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+                                <TouchableHighlight onPress={this.props._detailsView}>
+                                    <Image style={{ height: 200, width: 300 }} source={{ uri: a.urls.small }} />
+                                </TouchableHighlight>
                             </View>
                         )
                     })}
