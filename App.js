@@ -54,12 +54,16 @@ export default class App extends React.Component {
     }  
   };
 
+  _newPhotos = () => {
+    fetch(`https://api.unsplash.com/photos/random?client_id=${unsplashAPIKey}&count=10`).then(items => items.json()).then(data => this.setState({photos: data}))
+  }
+
   render() {
     let value = this.state.photos
     return (
       <View style={{flex : 1}}>
         {this.state.fontLoaded ? <Landing photo={value} _clearLanding={this._clearLanding} currentLocation={this.state.current}/>  : null}
-        {this.state.photosPage ? <PhotoPage images={value}/>: null}
+        {this.state.photosPage ? <PhotoPage images={value} _newPhotos={this._newPhotos}/>: null}
       </View>
     );
   }
