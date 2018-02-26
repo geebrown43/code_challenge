@@ -11,15 +11,14 @@ export default class Details extends React.Component {
                         return (
                             <View key={i} style={{ margin: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <View>
-                                    <Image style={{ height: 60, width: 90 }} source={{ uri: a.urls.small }} />
+                                    <Image style={{ height: 80, width: 120 }} source={{ uri: a.urls.small }} />
                                 </View>
 
                                 <View style={{justifyContent: 'center', width: 280, margin: 10}}>
                                     <TouchableHighlight>
-                                    <Text>{a.links.self}</Text>
+                                    <Text style={{color: 'rgb(69, 129, 229)'}}>{a.links.self}</Text>
                                     </TouchableHighlight>
                                 </View>
-
                             </View>
                         )
                     })}
