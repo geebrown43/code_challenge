@@ -6,7 +6,7 @@ import { Constants, Location, Permissions, Font } from 'expo';
 
 
 
-const unsplashAPIKey = '5f3c9049f0101b057020dc3171e8b4c01b92b22eb53563e1bbfcf333a44d6bcd'
+const unsplashAPIKey = '97647c8005793cda1f983ca28203bb35863946d4e438541d6736a8759d644295'
 const googleAPIKEY = 'AIzaSyARnfsD2NkNKrvm68t2dA6EdB7SWbjaDZI'
 export default class App extends React.Component {
   constructor(){
@@ -60,6 +60,7 @@ export default class App extends React.Component {
 
   render() {
     let value = this.state.photos
+    console.log(value)
     return (
       <View style={{flex : 1}}>
         {this.state.fontLoaded ? <Landing photo={value} _clearLanding={this._clearLanding} currentLocation={this.state.current}/>  : null}
