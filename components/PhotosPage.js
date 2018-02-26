@@ -34,8 +34,8 @@ export default class PhotoPage extends React.Component {
                         <Text style={styles.brand}>My Photos</Text>
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                        <Button transparent onPress={this._listView}><Icon name='list' /></Button>
-                        <Button transparent onPress={this._gridView}><Icon name='grid' /></Button>
+                        <Button transparent onPress={this._listView}><Icon name='list' fontSize={24}/></Button>
+                        <Button transparent onPress={this._gridView}><Icon name='grid' fontSize={24}/></Button>
                     </View>
                 </View>
                 <View>
@@ -44,7 +44,7 @@ export default class PhotoPage extends React.Component {
                 {this.state.gridView ? <Grid images={this.props.images} _detailsView={this._detailsView}/> : null}
                 {this.state.listView ? <List images={this.props.images} _detailsView={this._detailsView}/> : null}
                 {this.state.detailsView ? <Detail images={this.props.images}/>: null}
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ alignItems: 'center', marginTop: 6 }}>
                     <View>
                     <Button iconLeft transparent onPress={this.props._newPhotos}><Icon name='ios-refresh-circle'/><Text style={styles.footer}>Get Photos</Text></Button>
                     </View>                        
