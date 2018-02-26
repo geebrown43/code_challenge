@@ -10,13 +10,13 @@ class Landing extends React.Component{
             <View style={{flex: 1, justifyContent:'space-between', margin: 20, borderRadius: 1.5, borderWidth: 0.16, borderColor: 'black', shadowColor: 'black', shadowOffset:{width: 0 , height: 2}, shadowOpacity: 0.2}}>
                 <View style ={{alignItems: 'flex-end'}}>
                     <View>
-                    <Button transparent large onPress={this.props._clearLanding}><Icon name='close'/></Button>
+                    <Button transparent onPress={this.props._clearLanding}><Icon name='close' style={{fontSize: 40, color: 'gray'}}/></Button>
                     </View>
                     
                 </View>
                 <View style={{alignItems: 'center', justifyContent: 'space-between'}}>
                     <Image style={{height: 200, width: 310}} source={{uri: this.props.photo[0].urls.regular}}/>
-                    <View style={{borderWidth: 2, borderRadius: 50, height: 100, width: 100, marginTop: 20, marginBottom: 10}}></View>
+                    <View style={{borderWidth: 1, borderRadius: 50, height: 100, width: 100, marginTop: 20, marginBottom: 10}}></View>
                     <View>
                     <Text style={styles.name}>Gavin Brown</Text>
                     <Text style={styles.tag}>@gavindevelops</Text>
