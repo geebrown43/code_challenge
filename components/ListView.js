@@ -1,22 +1,30 @@
 import React from 'react'
-import {View, ScrollView, Text, Image, TouchableHighlight} from 'react-native'
+import { View, ScrollView, Text, Image, TouchableHighlight, StyleSheet, Dimensions } from 'react-native'
 
 
-
+const { width, height } = Dimensions.get('window')
 export default class List extends React.Component {
-    render(){
+    render() {
         return (
             <ScrollView>
-                    {this.props.images.map((a, i) => {
-                        return (
-                            <View key={i} style={{ margin: 10, alignItems: 'center', justifyContent: 'space-between' }}>
-                                <TouchableHighlight onPress={this.props._detailsView}>
-                                    <Image style={{ height: 200, width: 300 }} source={{ uri: a.urls.small }} />
-                                </TouchableHighlight>
-                            </View>
-                        )
-                    })}
-                </ScrollView>
+                {this.props.images.map((a, i) => {
+                    return (
+                        <View key={i} style={{ margin: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+                            <TouchableHighlight onPress={this.props._detailsView}>
+                                <Image style={styles.size} source={{ uri: a.urls.regular }} />
+                            </TouchableHighlight>
+                        </View>
+                    )
+                })}
+            </ScrollView>
         )
     }
 }
+
+
+const styles = StyleSheet.create({
+    size: {
+        height: height / 4,
+        width: width - 100
+    }
+})
