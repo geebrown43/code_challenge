@@ -60,7 +60,6 @@ export default class App extends React.Component {
 
   render() {
     let value = this.state.photos
-    console.log(value)
     return (
       <View style={{flex : 1}}>
         {this.state.fontLoaded ? <Landing photo={value} _clearLanding={this._clearLanding} currentLocation={this.state.current}/>  : null}
