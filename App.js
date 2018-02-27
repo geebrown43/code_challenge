@@ -22,7 +22,6 @@ export default class App extends React.Component {
   
   async componentDidMount(){
     await fetch(`https://api.unsplash.com/photos/random?client_id=${unsplashAPIKey}&count=10`).then(items => items.json()).then(data => this.setState({photos: data, landing: !this.state.landing}))
-    
     await Font.loadAsync({
       'open-sans': require('./assets/fonts/OpenSans-Bold.ttf'),
     });
