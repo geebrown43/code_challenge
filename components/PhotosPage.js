@@ -1,17 +1,31 @@
 import React from 'react'
-import { View, Text, ScrollView, Image, TouchableHighlight, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Image, TouchableHighlight, StyleSheet, Dimensions } from 'react-native'
 import { Button, Icon } from 'native-base'
 import Grid from './GridView'
 import List from './ListView'
 import Detail from './DetailsView'
 
-export default class PhotoPage extends React.Component {
 
-    state = {
+const {width, height} = Dimensions.get('window')
+
+export default class PhotoPage extends React.Component {
+constructor(){
+    super()
+    this. state = {
         gridView: true,
         listView: false,
-        detailsView: false
+        detailsView: false,
+        size: styles.container,
+        buttonHeight: styles.button
     }
+}
+
+async componentDidMount(){
+    if(width < 380){
+        this.setState({size: styles.containerSmall, buttonHeight: styles.buttonContainer})
+    }
+}
+    
 
 
     _listView = () => {
@@ -26,14 +40,13 @@ export default class PhotoPage extends React.Component {
     }
 
     render() {
-        console.log(this.props.images)
         return (
             <View style={{ margin: 10, justifyContent: 'space-around' }}>
                 <View style={styles.headingcontainer}>
-                    <View style={{ marginTop: 10 }}>
+                    <View style={this.state.size}>
                         <Text style={styles.brand}>My Photos</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <View style={this.state.buttonHeight}>
                         <Button transparent onPress={this._listView}><Icon name='list' fontSize={24}/></Button>
                         <Button transparent onPress={this._gridView}><Icon name='grid' fontSize={24}/></Button>
                     </View>
@@ -68,5 +81,19 @@ const styles = StyleSheet.create({
     footer: {
         textAlign: 'center',
         fontSize: 18
+    },
+    container: {
+        marginTop: 10
+    },
+    containerSmall: {
+        marginTop: 18
+    },
+    button:{
+        flexDirection: 'row',
+        marginTop: 10
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        marginTop: 18
     }
 })
