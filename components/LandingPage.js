@@ -1,9 +1,9 @@
 import React from 'react'
-import {View, Text, Image, StyleSheet} from 'react-native'
+import {View, Text, Image, StyleSheet, Dimensions} from 'react-native'
 import {Button, Icon} from 'native-base'
 
 
-
+const { width, height } = Dimensions.get('window')
 class Landing extends React.Component{
     render(){
         return (
@@ -15,7 +15,7 @@ class Landing extends React.Component{
                     
                 </View>
                 <View style={{alignItems: 'center', justifyContent: 'space-between'}}>
-                    <Image style={{height: 200, width: 310}} source={{uri: this.props.photo[0].urls.regular}}/>
+                    <Image style={{height: height / 4, width: width / 1.5}} source={{uri: this.props.photo[0].urls.regular}}/>
                     <View style={{borderWidth: 1, borderRadius: 50, height: 100, width: 100, marginTop: 20, marginBottom: 10}}></View>
                     <View>
                     <Text style={styles.name}>Gavin Brown</Text>
