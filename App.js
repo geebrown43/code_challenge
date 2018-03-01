@@ -4,20 +4,16 @@ import Landing from './components/LandingPage'
 import PhotoPage from './components/PhotosPage'
 import { Constants, Location, Permissions, Font } from 'expo';
 
-
-
 const unsplashAPIKey = '97647c8005793cda1f983ca28203bb35863946d4e438541d6736a8759d644295'
 const googleAPIKEY = 'AIzaSyARnfsD2NkNKrvm68t2dA6EdB7SWbjaDZI'
 export default class App extends React.Component {
-  constructor(){
-    super()
-    this.state ={
+    state = {
       photos: [],
       photosPage: false,
       location: null,
       current: '',
       fontLoaded: false
-    }
+    
   }
   
   async componentDidMount(){
@@ -27,7 +23,6 @@ export default class App extends React.Component {
     });
     this.setState({fontLoaded: true})
     this._getLocationAsync()
-
   }
 
   _clearLanding = () => {
