@@ -1,43 +1,32 @@
 import React from 'react'
-import { View, Text, ScrollView, Image, TouchableHighlight, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Dimensions } from 'react-native'
 import { Button, Icon } from 'native-base'
 import Grid from './GridView'
 import List from './ListView'
 import Detail from './DetailsView'
 
 
-const {width, height} = Dimensions.get('window')
-
+const { width, height } = Dimensions.get('window')
 export default class PhotoPage extends React.Component {
-constructor(){
-    super()
-    this. state = {
+    state = {
         gridView: true,
         listView: false,
         detailsView: false,
         size: styles.container,
         buttonHeight: styles.button,
-        visible: 'transparent',
         listButton: styles.listInactive,
         gridButton: styles.gridActive,
         listIcon: styles.listColorInactive,
         gridIcon: styles.gridColorActive
-    }
-}
 
-async componentDidMount(){
-    if(width < 380){
-        this.setState({size: styles.containerSmall, buttonHeight: styles.buttonContainer})
     }
-}
-    
 
 
     _listView = () => {
         this.setState({ gridView: false, listView: true, detailsView: false, gridButton: styles.gridInactive, listButton: styles.listActive, listIcon: styles.listColorActive, gridIcon: styles.gridColorInactive })
     }
     _gridView = () => {
-        this.setState({ gridView: true, listView: false, detailsView: false, gridButton: styles.gridActive, listButton: styles.listInactive, listIcon: styles.listColorInactive, gridIcon: styles.gridColorActive})
+        this.setState({ gridView: true, listView: false, detailsView: false, gridButton: styles.gridActive, listButton: styles.listInactive, listIcon: styles.listColorInactive, gridIcon: styles.gridColorActive })
     }
 
     _detailsView = () => {
@@ -52,20 +41,20 @@ async componentDidMount(){
                         <Text style={styles.brand}>My Photos</Text>
                     </View>
                     <View style={this.state.buttonHeight}>
-                        <Button  onPress={this._listView} style={this.state.listButton}><Icon name='list' style={this.state.listIcon}/></Button>
-                        <Button onPress={this._gridView} style={this.state.gridButton}><Icon name='grid' style={this.state.gridIcon}/></Button>
+                        <Button onPress={this._listView} style={this.state.listButton}><Icon name='list' style={this.state.listIcon} /></Button>
+                        <Button onPress={this._gridView} style={this.state.gridButton}><Icon name='grid' style={this.state.gridIcon} /></Button>
                     </View>
                 </View>
                 <View>
                     {/* SearchBar */}
                 </View>
-                {this.state.gridView ? <Grid images={this.props.images} _detailsView={this._detailsView}/> : null}
-                {this.state.listView ? <List images={this.props.images} _detailsView={this._detailsView}/> : null}
-                {this.state.detailsView ? <Detail images={this.props.images}/>: null}
+                {this.state.gridView ? <Grid images={this.props.images} _detailsView={this._detailsView} /> : null}
+                {this.state.listView ? <List images={this.props.images} _detailsView={this._detailsView} /> : null}
+                {this.state.detailsView ? <Detail images={this.props.images} /> : null}
                 <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                     <View>
-                    <Button iconLeft small onPress={this.props._newPhotos}><Icon name='ios-refresh-circle' style={{color: 'white'}}/><Text style={styles.footer}>Get Photos</Text></Button>
-                    </View>                        
+                        <Button iconLeft small onPress={this.props._newPhotos}><Icon name='ios-refresh-circle' style={{ color: 'white' }} /><Text style={styles.footer}>Get Photos</Text></Button>
+                    </View>
                 </View>
             </View>
         )
@@ -94,7 +83,7 @@ const styles = StyleSheet.create({
     containerSmall: {
         marginTop: 18
     },
-    button:{
+    button: {
         flexDirection: 'row',
         marginTop: 10
     },
@@ -117,7 +106,7 @@ const styles = StyleSheet.create({
     listColorActive: {
         color: 'white'
     },
-    listColorInactive : {
+    listColorInactive: {
         color: 'rgb(50, 124, 246)'
     },
     gridColorActive: {
