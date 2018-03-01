@@ -16,7 +16,12 @@ constructor(){
         listView: false,
         detailsView: false,
         size: styles.container,
-        buttonHeight: styles.button
+        buttonHeight: styles.button,
+        visible: 'transparent',
+        listButton: styles.listInactive,
+        gridButton: styles.gridActive,
+        listIcon: styles.listColorInactive,
+        gridIcon: styles.gridColorActive
     }
 }
 
@@ -29,10 +34,10 @@ async componentDidMount(){
 
 
     _listView = () => {
-        this.setState({ gridView: false, listView: true, detailsView: false })
+        this.setState({ gridView: false, listView: true, detailsView: false, gridButton: styles.gridInactive, listButton: styles.listActive, listIcon: styles.listColorActive, gridIcon: styles.gridColorInactive })
     }
     _gridView = () => {
-        this.setState({ gridView: true, listView: false, detailsView: false})
+        this.setState({ gridView: true, listView: false, detailsView: false, gridButton: styles.gridActive, listButton: styles.listInactive, listIcon: styles.listColorInactive, gridIcon: styles.gridColorActive})
     }
 
     _detailsView = () => {
@@ -47,8 +52,8 @@ async componentDidMount(){
                         <Text style={styles.brand}>My Photos</Text>
                     </View>
                     <View style={this.state.buttonHeight}>
-                        <Button transparent onPress={this._listView}><Icon name='list' fontSize={24}/></Button>
-                        <Button transparent onPress={this._gridView}><Icon name='grid' fontSize={24}/></Button>
+                        <Button  onPress={this._listView} style={this.state.listButton}><Icon name='list' style={this.state.listIcon}/></Button>
+                        <Button onPress={this._gridView} style={this.state.gridButton}><Icon name='grid' style={this.state.gridIcon}/></Button>
                     </View>
                 </View>
                 <View>
@@ -57,9 +62,9 @@ async componentDidMount(){
                 {this.state.gridView ? <Grid images={this.props.images} _detailsView={this._detailsView}/> : null}
                 {this.state.listView ? <List images={this.props.images} _detailsView={this._detailsView}/> : null}
                 {this.state.detailsView ? <Detail images={this.props.images}/>: null}
-                <View style={{ alignItems: 'center', marginTop: 6 }}>
+                <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                     <View>
-                    <Button iconLeft transparent onPress={this.props._newPhotos}><Icon name='ios-refresh-circle'/><Text style={styles.footer}>Get Photos</Text></Button>
+                    <Button iconLeft small onPress={this.props._newPhotos}><Icon name='ios-refresh-circle' style={{color: 'white'}}/><Text style={styles.footer}>Get Photos</Text></Button>
                     </View>                        
                 </View>
             </View>
@@ -79,8 +84,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     footer: {
-        textAlign: 'center',
-        fontSize: 18
+        fontSize: 14,
+        color: 'white',
+        paddingRight: 10
     },
     container: {
         marginTop: 10
@@ -95,5 +101,29 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: 'row',
         marginTop: 18
+    },
+    listInactive: {
+        backgroundColor: 'white'
+    },
+    listActive: {
+        backgroundColor: 'rgb(50, 124, 246)'
+    },
+    gridActive: {
+        backgroundColor: 'rgb(50, 124, 246)'
+    },
+    gridInactive: {
+        backgroundColor: 'white'
+    },
+    listColorActive: {
+        color: 'white'
+    },
+    listColorInactive : {
+        color: 'rgb(50, 124, 246)'
+    },
+    gridColorActive: {
+        color: 'white'
+    },
+    gridColorInactive: {
+        color: 'rgb(50, 124, 246)'
     }
 })
